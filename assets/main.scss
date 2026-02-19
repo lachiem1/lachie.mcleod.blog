@@ -1,0 +1,41 @@
+---
+---
+
+@import "minima";
+
+:root {
+  --lofi-bg: #f4f1ea;
+  --lofi-text: #1f1f1b;
+  --lofi-muted: #676259;
+  --lofi-accent: #2d6d62;
+  --lofi-rule: #d7d1c6;
+}
+
+body {
+  background: var(--lofi-bg);
+  color: var(--lofi-text);
+}
+
+.site-header,
+.site-footer {
+  border-color: var(--lofi-rule);
+}
+
+.site-title,
+.site-nav .page-link,
+a {
+  color: var(--lofi-accent);
+}
+
+a:visited {
+  color: #385f59;
+}
+
+.post-meta,
+.footer-col-wrapper {
+  color: var(--lofi-muted);
+}
+
+.wrapper {
+  max-width: 760px;
+}

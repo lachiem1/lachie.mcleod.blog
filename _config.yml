@@ -1,0 +1,10 @@
+title: Lachie McLeod
+description: Thoughts, projects, and links.
+url: "https://lachiem1.github.io"
+baseurl: "/lachie.mcleod.blog"
+theme: minima
+plugins:
+  - jekyll-feed
+header_pages:
+  - about.md
+  - links.md
