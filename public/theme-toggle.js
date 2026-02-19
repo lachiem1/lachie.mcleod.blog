@@ -1,5 +1,5 @@
 (function () {
-  var storageKey = "site-theme";
+  var storageKey = "site-theme-v2";
   var root = document.documentElement;
   var toggleButton;
 

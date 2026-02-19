@@ -12,7 +12,7 @@ const base = rawBase.endsWith("/") ? rawBase : `${rawBase}/`;
 ---
 
 <!doctype html>
-<html lang="en" data-base={base}>
+<html lang="en" data-base={base} data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -22,7 +22,7 @@ const base = rawBase.endsWith("/") ? rawBase : `${rawBase}/`;
     <script is:inline>
       (function () {
         var root = document.documentElement;
-        var storageKey = "site-theme";
+        var storageKey = "site-theme-v2";
         var theme = "dark";
 
         try {
