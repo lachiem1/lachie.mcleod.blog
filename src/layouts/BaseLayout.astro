@@ -12,12 +12,13 @@ const base = rawBase.endsWith("/") ? rawBase : `${rawBase}/`;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" data-base={base}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content="Thoughts, projects, and links." />
+    <link id="site-favicon" rel="icon" type="image/svg+xml" href={`${base}favicon-dark.svg`} />
     <script is:inline>
       (function () {
         var root = document.documentElement;
@@ -32,6 +33,12 @@ const base = rawBase.endsWith("/") ? rawBase : `${rawBase}/`;
         } catch (e) {}
 
         root.setAttribute("data-theme", theme);
+
+        var favicon = document.getElementById("site-favicon");
+        var base = root.getAttribute("data-base") || "/";
+        if (favicon) {
+          favicon.setAttribute("href", base + (theme === "dark" ? "favicon-dark.svg" : "favicon-light.svg"));
+        }
       })();
     </script>
   </head>

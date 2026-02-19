@@ -3,8 +3,19 @@
   var root = document.documentElement;
   var toggleButton;
 
+  function setFavicon(theme) {
+    var favicon = document.getElementById("site-favicon");
+    if (!favicon) {
+      return;
+    }
+
+    var base = root.getAttribute("data-base") || "/";
+    favicon.setAttribute("href", base + (theme === "dark" ? "favicon-dark.svg" : "favicon-light.svg"));
+  }
+
   function applyTheme(theme) {
     root.setAttribute("data-theme", theme);
+    setFavicon(theme);
     if (toggleButton) {
       var nextLabel = theme === "dark" ? "Switch to light theme" : "Switch to dark theme";
       toggleButton.setAttribute("aria-label", nextLabel);
