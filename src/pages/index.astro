@@ -1,0 +1,49 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+import GitHubIcon from "../components/icons/GitHubIcon.astro";
+import LinkedInIcon from "../components/icons/LinkedInIcon.astro";
+
+const posts = (await getCollection("posts")).sort(
+  (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime()
+);
+const rawBase = import.meta.env.BASE_URL;
+const base = rawBase.endsWith("/") ? rawBase : `${rawBase}/`;
+---
+
+<BaseLayout title="Lachie McLeod">
+  <section class="intro-block">
+    <img class="intro-photo" src={`${base}images/profile.jpg`} alt="Portrait of Lachie McLeod" />
+    <div class="intro-copy">
+      <p class="intro-handle">@lachiem1</p>
+      <p>Thoughts, projects, and links.</p>
+      <div class="intro-links" aria-label="Social links">
+        <a class="icon-link" href="https://github.com/lachiem1" rel="me" aria-label="GitHub" title="GitHub">
+          <GitHubIcon />
+        </a>
+        <a class="icon-link" href="https://www.linkedin.com/in/lachie-mcleod1/" rel="me" aria-label="LinkedIn" title="LinkedIn">
+          <LinkedInIcon />
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <ul class="post-list">
+    {posts.map((post) => (
+      <li>
+        <a href={`${base}posts/${post.slug}/`}><strong>{post.data.title}</strong></a>
+        <div class="post-meta">
+          <time datetime={post.data.pubDate.toISOString()}>
+            {post.data.pubDate.toLocaleDateString("en-AU", {
+              year: "numeric",
+              month: "short",
+              day: "numeric"
+            })}
+          </time>
+          {" - "}
+          {post.data.description}
+        </div>
+      </li>
+    ))}
+  </ul>
+</BaseLayout>

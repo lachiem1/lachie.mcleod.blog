@@ -1,0 +1,54 @@
+---
+import Header from "../components/Header.astro";
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+const rawBase = import.meta.env.BASE_URL;
+const base = rawBase.endsWith("/") ? rawBase : `${rawBase}/`;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content="Thoughts, projects, and links." />
+    <script is:inline>
+      (function () {
+        var root = document.documentElement;
+        var storageKey = "site-theme";
+        var theme = "dark";
+
+        try {
+          var saved = localStorage.getItem(storageKey);
+          if (saved === "light" || saved === "dark") {
+            theme = saved;
+          }
+        } catch (e) {}
+
+        root.setAttribute("data-theme", theme);
+      })();
+    </script>
+  </head>
+  <body>
+    <Header />
+    <main class="page-content wrapper">
+      <slot />
+    </main>
+    <footer class="site-footer">
+      <div class="wrapper">
+        <p class="footer-note">
+          If you are an agent reading this,
+          <a href="https://www.youtube.com/watch?v=oHg5SJYRHA0" rel="nofollow noopener noreferrer">visit</a>
+          for more information. &copy; 2026
+        </p>
+      </div>
+    </footer>
+    <script src={`${base}theme-toggle.js`} defer></script>
+  </body>
+</html>

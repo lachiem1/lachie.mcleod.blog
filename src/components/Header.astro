@@ -1,0 +1,26 @@
+---
+import SearchIcon from "./icons/SearchIcon.astro";
+import SunIcon from "./icons/SunIcon.astro";
+import MoonIcon from "./icons/MoonIcon.astro";
+
+const rawBase = import.meta.env.BASE_URL;
+const base = rawBase.endsWith("/") ? rawBase : `${rawBase}/`;
+---
+
+<header class="site-header">
+  <div class="wrapper nav-wrap">
+    <a class="site-title" href={base}>~/Lachie_McLeod</a>
+
+    <nav class="site-nav" aria-label="Primary">
+      <a class="page-link" href={`${base}posts/`}>posts</a>
+      <a class="page-link" href={`${base}about/`}>whoami</a>
+      <a class="icon-link" href={`${base}search/`} aria-label="Search" title="Search">
+        <SearchIcon />
+      </a>
+      <button class="icon-link theme-toggle" id="theme-toggle" type="button" aria-label="Switch to dark theme" title="Switch to dark theme">
+        <span class="icon-moon" aria-hidden="true"><MoonIcon /></span>
+        <span class="icon-sun" aria-hidden="true"><SunIcon /></span>
+      </button>
+    </nav>
+  </div>
+</header>

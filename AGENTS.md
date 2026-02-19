@@ -9,5 +9,5 @@
 ## Consistency rules
 - Keep icon stroke color as `currentColor`.
 - Keep linecap/linejoin rounded.
-- If a new icon is needed, add it under `_includes/icons/` as an SVG include.
+- If a new icon is needed, add it under `src/components/icons/` as an Astro SVG component.
 - Do not override icon size or stroke per-instance unless there is a clear accessibility reason.

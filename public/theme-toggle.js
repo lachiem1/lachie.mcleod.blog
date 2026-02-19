@@ -1,9 +1,15 @@
 (function () {
   var storageKey = "site-theme";
   var root = document.documentElement;
+  var toggleButton;
 
   function applyTheme(theme) {
     root.setAttribute("data-theme", theme);
+    if (toggleButton) {
+      var nextLabel = theme === "dark" ? "Switch to light theme" : "Switch to dark theme";
+      toggleButton.setAttribute("aria-label", nextLabel);
+      toggleButton.setAttribute("title", nextLabel);
+    }
   }
 
   function getPreferredTheme() {
@@ -11,7 +17,7 @@
     if (saved === "light" || saved === "dark") {
       return saved;
     }
-    return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    return "dark";
   }
 
   function toggleTheme() {
@@ -24,9 +30,11 @@
   applyTheme(getPreferredTheme());
 
   document.addEventListener("DOMContentLoaded", function () {
-    var button = document.getElementById("theme-toggle");
-    if (button) {
-      button.addEventListener("click", toggleTheme);
+    toggleButton = document.getElementById("theme-toggle");
+    applyTheme(root.getAttribute("data-theme") || getPreferredTheme());
+
+    if (toggleButton) {
+      toggleButton.addEventListener("click", toggleTheme);
     }
   });
 })();
