@@ -176,7 +176,7 @@ html[data-theme="dark"] .site-title:hover {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: inherit;
+  color: var(--lofi-accent);
   text-decoration: none;
 }
 
